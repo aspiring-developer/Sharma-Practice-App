@@ -1,2 +1,4 @@
-# sharma-fine-arts
-Practice repo
+<!-- ### Sharma Fine Arts Dummy Shopping Cart -->
+
+### Practice work
+- Practice repo
