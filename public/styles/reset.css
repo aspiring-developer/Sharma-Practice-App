@@ -18,6 +18,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', sans-serif;
+  font-weight: bold!important;
 }
 
 .mainWrapper {
@@ -29,7 +30,6 @@ img {
 }
 
 a, a:link, a:visited, a:hover, a:active {
-  color: #666;
   /* Change it with separating pseudo selectors - LVHA */
   text-decoration: none;
 }
