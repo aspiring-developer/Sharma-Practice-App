@@ -1,0 +1,31 @@
+.individualItemWrapper {
+  padding: 1rem;
+  border: 1px solid #aeaeae;
+  border-radius: 7px;
+}
+
+.paintingImage {
+  padding: .5rem;
+  border: 1px solid #dbdbdb;
+}
+
+.itemTitle, .itemPrice {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.itemDescription {
+  text-align: left;
+}
+
+.itemInCart {
+  display: none;
+}
+
+.itemInStock {
+  display: none;
+}
+
+.itemTotalAmount {
+  display: none;
+}
