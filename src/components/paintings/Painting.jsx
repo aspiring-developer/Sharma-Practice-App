@@ -7,7 +7,7 @@ const Painting = (props) => {
     console.log(props);
     return (
       <>
-        {/*//TODO: Note: We need to give a key when using map(). Can do it two ways: If the array has an id, then do the second way. If not, can use the "index" of the array as a key (First way)      <li key={index}>{painting.title}</li>   <li key={painting.id}>{painting.title}</li> */}
+        {/*//TODO: Note: We need to give a key when using map(). Can do it two ways: If the array has an id, then do the second way. If not, can use the "index" of the array as a key (First way) <li key={index}>{painting.title}</li>   <li key={painting.id}>{painting.title}</li> */}
         <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3">
           <ul className="individualItemWrapper">
             <li>
