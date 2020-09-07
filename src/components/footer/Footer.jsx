@@ -4,8 +4,7 @@ const Footer = () => {
   return (
     <>
       <h5>
-        {" "}
-        Footer component. <br /> Footer is working
+        Footer component. <br /> Footer is working....
       </h5>
     </>
   );
