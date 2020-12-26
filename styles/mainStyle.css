@@ -1,4 +1,22 @@
 .mainWrapper {
   background-color: #F2F4F6;
   padding: 2rem;
+  text-align: center;
+}
+
+h1 {
+  padding-bottom:2rem;
+}
+.form-group {
+  vertical-align: middle;
+  margin: 0 auto;
+}
+.form-group label {
+  padding-right: 1rem;
+  /*display:inline-block;*/
+}
+.form-control {
+  margin-right: 1rem;
+  display:inline-block;
+  width: 300px;
 }
