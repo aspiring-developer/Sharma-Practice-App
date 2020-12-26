@@ -41,13 +41,13 @@ h1 {
   background-color: #ffffff;
   margin: 0 auto;
   margin-bottom: 1rem;
-padding: 1rem;
+  padding: 1rem;
   font-size: 2rem;
   text-align: center;
   width: 600px;
 }
 
-.liCol li {
+.liCol li span {
 margin-right: 2rem;
 }
 

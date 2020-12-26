@@ -4,7 +4,7 @@ deleteButtonEl = document.querySelector(".deleteButton");
 liColEl = document.querySelector(".liCol");
 
 addButtonEl.addEventListener("click", function() {
-  liColEl.innerHtml = "Hello";
+  //liColEl.innerHtml = "Hello";
 })
 editButtonEl.addEventListener("click", function() {
 
