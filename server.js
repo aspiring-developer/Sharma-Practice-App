@@ -3,8 +3,18 @@ let app = express();
 let port = process.env.PORT || 3000;
 let bodyParser = require('body-parser');
 let mongodb = require('mongodb');
+let db;
 
-//let connectionstrings = mongodb+srv://user1:Data001$@cluster0.wuaz2.mongodb.net/List-Item-Database-12262020?retryWrites=true&w=majority;
+let connectionString = 'mongodb+srv://user1:Data001$@cluster0.wuaz2.mongodb.net/List-Item-Database-12262020?retryWrites=true&w=majority';
+mongodb.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, client) {
+db = client.db()
+
+app.listen(port, function () {
+  console.log(`App is running on Port: http://localhost:${port} `)
+});
+})
+
+
 
 app.use(express.static(__dirname));
 //app.use(express.static(__dirname + '/public'));
@@ -40,6 +50,7 @@ app.get('/', function (req, res) {
         <input type="text" class="form-control" name="userInput" autofocus placeholder="Item name"  />
         <button class="btn btn-info addButton"> Add Item </button>
         </div>
+
       </form>
     </div>
   </div>
@@ -53,40 +64,51 @@ app.get('/', function (req, res) {
 });
 
 app.post('/item-list', function (req, res) {
-  //db.collection("List-Item-Collection-12262020").
-let userEnteredValue = req.body.userInput;
- console.log("Post method is working!");
- console.log(userEnteredValue);
-// return userEntered;
-res.send(`<!DOCTYPE html>
-<html lang="en">
+  let userEnteredValue = req.body.userInput;
+ db.collection("List-Item-Collection-12262020").insertOne({userInputTexts: userEnteredValue}, function() {
+  console.log(userEnteredValue);
+ // return userEnteredValue;
+ res.send(`<!DOCTYPE html>
+ <html lang="en">
 
-<head>
-  <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link href="styles/reset.css" rel="stylesheet" />
-  <link href="styles/mainStyle.css" rel="stylesheet" />
-  <title>Sharma Practice App</title>
-</head>
+ <head>
+   <meta charset="utf-8" />
+   <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   <link href="styles/reset.css" rel="stylesheet" />
+   <link href="styles/mainStyle.css" rel="stylesheet" />
+   <title>Sharma Practice App</title>
+ </head>
 
-<body>
-  <div class="container mainWrapper">
-    <header>
-       <h1>This is Item List Page </h1>
-       displaying after submitting form.
-    </header>
-  </div>
+ <body>
+   <div class="container mainWrapper">
+     <header>
+        <h1>This is Item List Page </h1>
+        displaying after submitting form.
+     </header>
+     <div class="row ulWrapperRow">
+<ul>
+<div class="col liCol">
+<li> Hard-coded item name #1 </li> <button class="btn btn-success editButton"> Edit </button> <button class="btn btn-danger deleteButton"> Delete </button>
+</div>
+<div class="col liCol">
+<li> Hard-coded item name #2 </li> <button class="btn btn-success editButton"> Edit </button> <button class="btn btn-danger deleteButton"> Delete </button>
+</div>
+<div class="col liCol">
+<li> Hard-coded item name #3 </li> <button class="btn btn-success editButton"> Edit </button> <button class="btn btn-danger deleteButton"> Delete </button>
+</div>
+</ul>
+</div>
+   </div>
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</body>
+ <!-- jQuery library -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ </body>
 
-</html>`);
+ </html>`);
+ });
+
 });
 
-app.listen(port, function () {
-  console.log(`App is running on Port: http://localhost:${port} `)
-});

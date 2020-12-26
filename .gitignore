@@ -26,3 +26,4 @@ yarn-error.log*
 /non-uploadable-materials
 desktop.ini
 
+.env
