@@ -1,4 +1,56 @@
 .mainWrapper {
   background-color: #F2F4F6;
-  padding: 2rem;
+  padding: 4rem;
+  text-align: center;
+  width: 800px;
+}
+
+h1 {
+  padding-bottom: 4rem;
+}
+
+.form-group {
+  vertical-align: middle;
+  margin: 0 auto;
+}
+
+.form-group label {
+  padding-right: 1rem;
+}
+
+.form-control {
+  margin-right: 1rem;
+  display:inline-block;
+  width: 300px;
+}
+
+.ulWrapperRow {
+  background-color: #c9e2df;
+  margin: 0 auto;
+  margin-top: 4rem;
+  padding: 1rem;
+  padding-bottom: 0;
+  width: 624px;
+}
+
+
+.liCol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  font-size: 2rem;
+  text-align: center;
+  width: 600px;
+}
+
+.liCol li span {
+margin-right: 2rem;
+}
+
+.liCol .btn {
+  margin-right: 1rem;
 }
