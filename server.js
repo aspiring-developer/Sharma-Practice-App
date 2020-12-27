@@ -17,9 +17,9 @@ app.listen(PORT, function() {
 
 app.use(express.static(__dirname));
 //app.use(express.static(__dirname + '/public'));
-
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
 
 app.get('/', function(req, res) {
   db.collection('myCollection').find().toArray(function(err, allItems) {
@@ -45,7 +45,7 @@ res.send(`
         <h1>List Item Creating App </h1>
       </header>
       <div class="formWrapper">
-        <form action="/item-list" method="POST">
+        <form action="#" method="POST">
           <div class="form-group">
           <label for="userInput"> Enter Item Name: </label>
           <input type="text" class="form-control" name="userInput" autofocus placeholder="Item name"  />
@@ -54,7 +54,9 @@ res.send(`
   <div class="row ulWrapperRow">
   <ul>
   ${allItems.map(function(singleItem) {
-    return `<div class="col liCol"> <li> <span> ${singleItem.textSS} </span> <button class="btn btn-success editButton"> Edit </button> <button class="btn btn-danger deleteButton"> Delete </button> </li> </div> `
+    return `<div class="col liCol"> <li> <span class="singleItem"> ${singleItem.textSS} </span>
+    <button data-id="${singleItem._id}" class="btn btn-success editButton"> Edit </button>
+    <button class="btn btn-danger deleteButton"> Delete </button> </li> </div> `
     }).join('')}
    </ul>
   </div>
@@ -66,6 +68,7 @@ res.send(`
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="browserScript.js"></script>
   </body>
   </html>`)
@@ -79,3 +82,9 @@ app.post('/item-list', function(req, res) {
   })
 })
 
+app.post('/update-item', function(req, res) {
+  db.collection('myCollection').findOneAndUpdate({_id: new mongodb.ObjectId(req.body.idSS)}, {$set: {textSS: req.body.textSS}}, function() {
+res.send('Success!');
+
+  })
+})
